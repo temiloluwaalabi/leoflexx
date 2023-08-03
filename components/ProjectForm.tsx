@@ -1,6 +1,6 @@
 'use client'
-import React, {ChangeEvent, useState} from 'react'
-import {ProjectInterface, SessionInterface} from "@/common.types";
+import React, {ChangeEvent, FormEvent, useState} from 'react'
+import {FormState, ProjectInterface, SessionInterface} from "@/common.types";
 import Image from "next/image"
 import FormField from "./FormField";
 import CustomMenu from "./CustomMenu";
@@ -15,7 +15,7 @@ type Props = {
 }
 
 const ProjectForm = ({type, session, project}: Props) => {
-    const [form, setForm] = useState({
+    const [form, setForm] = useState<FormState>({
         image: project?.image || '',
         title: project?.title || '',
         description: project?.description || '',
@@ -23,10 +23,10 @@ const ProjectForm = ({type, session, project}: Props) => {
         liveSiteUrl: project?.liveSiteUrl || '',
         category: project?.category || '',
     })
-    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
     const router = useRouter();
 
-    const handleFormSubmit = async (e: React.FormEvent) => {
+    const handleFormSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         setIsSubmitting(true);
@@ -43,7 +43,7 @@ const ProjectForm = ({type, session, project}: Props) => {
                 router.push('/')
             }
         } catch (error) {
-            console.log(error)
+            alert(`Failed to ${type === "create" ? "create" : "edit"} a project. Try again!`);        
         } finally {
             setIsSubmitting(false)
         }
@@ -65,7 +65,7 @@ const ProjectForm = ({type, session, project}: Props) => {
         }
     };
 
-    const handleStateChange = (fieldName: string, value: string) => {
+    const handleStateChange = (fieldName: keyof FormState, value: string) => {
         setForm((prevState) => (
             {
                 ...prevState, 

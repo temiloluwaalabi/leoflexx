@@ -7,7 +7,8 @@ import React, { useState } from 'react'
 
 const ProjectActions = ({projectId}:{projectId: string}) => {
     const router = useRouter();
-    const [isDeleting, setIsDeleting] = useState(false)
+    const [isDeleting, setIsDeleting] = useState<boolean>(false)
+    
     const handleDeleteProject = async () => {
         setIsDeleting(true);
 

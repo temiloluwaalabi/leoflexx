@@ -16,8 +16,6 @@ const RelatedProjects = async ({userId, projectId}: Props) => {
     const filteredProjects = result?.user?.projects?.edges
         ?.filter(({node} : {node: ProjectInterface}) => node?.id !== projectId)
 
-    console.log(filteredProjects)
-
     if(filteredProjects?.length === 0) return null;
   return (
     <section className="flex flex-col mt-32 w-full">

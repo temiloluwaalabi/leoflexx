@@ -1,6 +1,6 @@
 'use client'
 import {getProviders, signIn} from "next-auth/react"
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Button from "./Button";
 
 type Provider = {
@@ -9,7 +9,7 @@ type Provider = {
   type: string;
   signinUrl: string;
   callbackUrl: string;
-  signinUrlParams?: Record<string, string> | null
+  signinUrlParams?: Record<string, string> | undefined
 }
 type Providers = Record<string, Provider>;
 
