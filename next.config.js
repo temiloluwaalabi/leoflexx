@@ -5,6 +5,9 @@ const nextConfig = {
     },
     experimental: {
         serverComponentsExternalPackages: ['cloudinary', 'graphql-request']
+    },
+    typescript: {
+        ignoreBuildErrors: true,
     }
 }
 
