@@ -14,13 +14,13 @@ type ProjectsSearch = {
     }
   }
 }
-type searchParams = {
+type SearchParams = {
   category?: string | null;
   endcursor?: string | null;
 }
 
 type Props = {
-  searchParams: searchParams;
+  searchParams: SearchParams;
 }
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;

@@ -41,11 +41,11 @@ const makeGraphQLRequest = async (query: string, variables: {}) => {
     }
 }
 
-export const fetchAllProjects =  (category?: string | null, endCursor?: string | null) => {
+export const fetchAllProjects =  (category?: string | null, endcursor?: string | null) => {
     client.setHeader('x-api-key', apiKey);
 
     return makeGraphQLRequest(projectsQuery, {
-        category, endCursor
+        category, endcursor
     })
 }
 
